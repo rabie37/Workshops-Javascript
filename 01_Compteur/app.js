@@ -7,15 +7,19 @@ let integer = 0;
 add.addEventListener('click',function(){
     integer +=1;
     int.innerHTML =integer;
+    if(integer>0){
     int.style.color = 'green';
+}
 })
 remove.addEventListener('click',function(){
     integer -=1 ;
     int.innerHTML =integer;
-    int.style.color = 'red';
+    if(integer<0){
+        int.style.color = 'red';
+    }
 })
 reset.addEventListener('click',function(){
     integer =0;
     int.innerHTML =integer;
-    int.style.color = 'black';
+    int.style.color = 'black';   
 })
