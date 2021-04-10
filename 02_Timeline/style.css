@@ -50,13 +50,6 @@ h1 {
 
 
 
-.timeline ul li div {
-  position: relative;
-  bottom: 0;
-  width: 400px;
-  padding: 15px;
-  background: #F45B69;
-}
 
 time {
   display: block;
@@ -65,10 +58,86 @@ time {
   margin-bottom: 8px;
 }
 
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 15px;
+  background: #E86361;
+}
+
+.timeline ul li div::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline ul li:nth-child(odd) div {
+  left: 45px;
+}
+
+
+
+.timeline ul li:nth-child(even) div {
+  left: -439px;
+}
+
+.timeline ul li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent #E86361;
+}
+.timeline ul li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #E86361 transparent transparent;
+}
+
 
 /* EFFECTS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.timeline ul li::after {
+  transition: background .5s ease-in-out;
+}
 
+.timeline ul li.in-view::after {
+  background: #E86361;
+}
+
+.timeline ul li div {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.timeline ul li:nth-child(odd) div {
+  transform: translate3d(200px, 0, 0);
+}
+
+.timeline ul li:nth-child(even) div {
+  transform: translate3d(-200px, 0, 0);
+}
+
+.timeline ul li.in-view div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
 
 
 /* GENERAL MEDIA QUERIES
